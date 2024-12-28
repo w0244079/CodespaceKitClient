@@ -2,10 +2,10 @@
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "remoteUser": "vscode",
   "workspaceFolder": "/home/vscode",
-  // "features": {
-  //   "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  // },
-   "customizations": {
+  "features": {
+   "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
     "vscode": {
       "settings": {
         "workbench.startupEditor": "none",
