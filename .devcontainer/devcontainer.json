@@ -3,7 +3,8 @@
   "remoteUser": "vscode",
   "workspaceFolder": "/home/vscode",
   "features": {
-   "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+   "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+   "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "vscode": {
@@ -15,19 +16,43 @@
           "version": "2.0.0",
           "tasks": [
             {
+              "label": "Open KitClient",
+              "dependsOrder": "sequence",
+              "dependsOn": [
+                "Setup User",
+                "Request PAT",
+                "Install Kitty"
+              ],
+              "runOptions": {
+                "runOn": "folderOpen"
+              }
+            },
+            {
               "label": "Setup User",
               "type": "shell",
               "command": "/workspaces/$RepositoryName/.devcontainer/setupUser.bash",
-              "runOptions": {
-                "runOn": "folderOpen"
-              },
               "presentation": {
                 "reveal": "never",
                 "close": true
               }
             },
             {
-              "label": "Kitty",
+              "label": "Request PAT",
+              "type": "shell",
+              "command": "/workspaces/$RepositoryName/.devcontainer/requestPAT.bash",
+              "runOptions": {
+                "runOn": "folderOpen"
+              },
+              "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "echo": false,
+                "showReuseMessage": false,
+                "focus": true
+              }
+            },
+            {
+              "label": "Install Kitty",
               "type": "shell",
               "command": "/workspaces/$RepositoryName/.devcontainer/installKitFeatures.bash",
               "runOptions": {
