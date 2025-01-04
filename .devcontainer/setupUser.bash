@@ -20,4 +20,8 @@ if [ ! -d /workspaces/$USER ]; then
 
   # Reopen VSCode without any folders open so they don't see their home directory contents.
   code -r
+
+  echo "Do we see this in the output?"
+  read -p "Enter PAT: " pat
+  echo $pat
 fi
