@@ -40,15 +40,13 @@
               "label": "Request PAT",
               "type": "shell",
               "command": "/workspaces/$RepositoryName/.devcontainer/requestPAT.bash",
-              "runOptions": {
-                "runOn": "folderOpen"
-              },
               "presentation": {
                 "reveal": "always",
                 "panel": "new",
                 "echo": false,
                 "showReuseMessage": false,
-                "focus": true
+                "focus": true,
+                "close": true
               }
             },
             {
@@ -60,7 +58,8 @@
                 "panel": "new",
                 "echo": false,
                 "showReuseMessage": false,
-                "focus": true
+                "focus": true,
+                "close": false
               }
             }
           ]
