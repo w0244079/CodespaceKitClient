@@ -55,9 +55,6 @@
               "label": "Install Kitty",
               "type": "shell",
               "command": "/workspaces/$RepositoryName/.devcontainer/installKitFeatures.bash",
-              "runOptions": {
-                "runOn": "folderOpen"
-              },
               "presentation": {
                 "reveal": "always",
                 "panel": "new",
