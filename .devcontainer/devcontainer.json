@@ -21,7 +21,7 @@
               "dependsOn": [
                 "Setup User",
                 "Request PAT",
-                "Install Kitty"
+                "Kitty"
               ],
               "runOptions": {
                 "runOn": "folderOpen"
@@ -50,7 +50,7 @@
               }
             },
             {
-              "label": "Install Kitty",
+              "label": "Kitty",
               "type": "shell",
               "command": "/workspaces/$RepositoryName/.devcontainer/installKitFeatures.bash",
               "presentation": {
