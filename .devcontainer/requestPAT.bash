@@ -16,6 +16,8 @@ fi
 PAT=$(cat ~/.kit/token)
 export GITHUB_TOKEN="$PAT"
 
+exit -1
+
 # If the PAT does not work, prompt for a new one until we 
 # get one that works.
 while [ ! $(gh auth status) ];
