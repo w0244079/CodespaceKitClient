@@ -39,7 +39,6 @@ done
 
 if [ -z "$(grep "GITHUB_TOKEN" ~/.bashrc)" ]; 
 then
-  echo "not there"
   echo "" >> ~/.bashrc
   echo "export GITHUB_TOKEN=$GITHUB_TOKEN" >> ~/.bashrc
 else 
