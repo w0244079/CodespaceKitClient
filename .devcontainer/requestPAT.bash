@@ -8,6 +8,7 @@ unset GITHUB_TOKEN
 # If we don't already have a token stashed, then prompt for one
 # and stash it.
 if [ ! -f ~/.kit/token ];
+then
   read -p -s "Paste your GitHub Personal Access Token (PAT) here: " PAT
   echo "$PAT" > ~/.kit/token
 fi
@@ -31,8 +32,3 @@ do
   export GITHUB_TOKEN="$PAT"
 done
 
-
-
-echo "The PAT is $PAT"
-
-read -p "any key to continue"
