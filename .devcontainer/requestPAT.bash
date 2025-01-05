@@ -3,34 +3,45 @@
 # Remove the PAT set by the codespace.
 # That PAT is scoped for the repo used to create the codespace.
 # It will not work to push a manually cloned repo.
-unset GITHUB_TOKEN
+export GITHUB_TOKEN=
 
 # If we don't already have a token stashed, then prompt for one
 # and stash it.
 if [ ! -f ~/.kit/token ];
 then
-  read -p -s "Paste your GitHub Personal Access Token (PAT) here: " PAT
-  echo "$PAT" > ~/.kit/token
+  read -s -p "Paste your GitHub Personal Access Token (PAT) here: " PAT
+  echo ""
+  mkdir ~/.kit
+  echo $PAT > ~/.kit/token
 fi
 
 PAT=$(cat ~/.kit/token)
-export GITHUB_TOKEN="$PAT"
-
-exit -1
+export GITHUB_TOKEN=$PAT
 
 # If the PAT does not work, prompt for a new one until we 
 # get one that works.
-while [ ! $(gh auth status) ];
+while ! gh auth status &> /dev/null;
 do
+  export GITHUB_TOKEN=
+
   echo "Your Personal Access Token (PAT) is not valid."
-  echo "  If you just created the PAT try it again."
-  echo "  If your PAT fails multiple times, try creating a new one."
-  echo "  If your PAT is old, it may have expired. Try creating a new one."
+  echo "Possible reasons include:"
+  echo "  The PAT you entered may have been incorrect."
+  echo "  The PAT you entered previously may have expired."
   echo ""
 
-  read -p -s "Paste your GitHub Personal Access Token (PAT) here: " PAT
+  read -s -p "Paste your GitHub Personal Access Token (PAT) here: " PAT
+  echo ""
 
   echo "$PAT" > ~/.kit/token
-  export GITHUB_TOKEN="$PAT"
+  export GITHUB_TOKEN=$PAT
 done
 
+if [ -z "$(grep "GITHUB_TOKEN" ~/.bashrc)" ]; 
+then
+  echo "not there"
+  echo "" >> ~/.bashrc
+  echo "export GITHUB_TOKEN=$GITHUB_TOKEN" >> ~/.bashrc
+else 
+  sed -i "s/GITHUB_TOKEN=.*/GITHUB_TOKEN=$PAT/" ~/.bashrc
+fi
