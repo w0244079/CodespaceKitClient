@@ -3,8 +3,8 @@
   "remoteUser": "vscode",
   "workspaceFolder": "/home/vscode",
   "features": {
-   "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-   "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "vscode": {
@@ -32,8 +32,11 @@
               "type": "shell",
               "command": "/workspaces/$RepositoryName/.devcontainer/setupUser.bash",
               "presentation": {
-                "reveal": "never",
-                "close": true
+                "reveal": "always",
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "focus": true,
+                "close": false
               }
             },
             {
@@ -42,11 +45,10 @@
               "command": "/workspaces/$RepositoryName/.devcontainer/requestPAT.bash",
               "presentation": {
                 "reveal": "always",
-                "panel": "new",
-                "echo": false,
+                "panel": "dedicated",
                 "showReuseMessage": false,
                 "focus": true,
-                "close": true
+                "close": false
               }
             },
             {
@@ -55,8 +57,7 @@
               "command": "/workspaces/$RepositoryName/.devcontainer/installKitFeatures.bash",
               "presentation": {
                 "reveal": "always",
-                "panel": "new",
-                "echo": false,
+                "panel": "dedicated",
                 "showReuseMessage": false,
                 "focus": true,
                 "close": false
